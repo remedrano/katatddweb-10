@@ -33,9 +33,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            print "P4"
             messages.success(request, "Bienvenido al sistema {}".format(username), extra_tags="alert-success")
-            print "P5"
             return HttpResponseRedirect('/')
         else:
             messages.error(request, "¡El usuario o la contraseña son incorrectos!", extra_tags="alert-danger")
