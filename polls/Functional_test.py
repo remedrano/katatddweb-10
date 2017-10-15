@@ -19,7 +19,7 @@ class FunctionalTest(TestCase):
     def test_title(self):
         self.browser.get('http://www.google.com.co')
         self.assertIn('Google', self.browser.title)
-        
+
 #        self.browser.get('http://localhost:8000')
 #        self.assertIn('Busco Ayuda', self.browser.title)
 
