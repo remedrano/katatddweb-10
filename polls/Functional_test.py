@@ -35,7 +35,7 @@ class FunctionalTest(TestCase):
         experiencia.send_keys('7')
 
         self.browser.find_element_by_xpath(
-            "//select[@id='id_tiposDeServicio']/option[text()='DesarrolladorWeb']").click()
+            "//select[@id='id_tiposDeServicio']/option[text()='Desarrollador Web']").click()
         telefono = self.browser.find_element_by_id('id_telefono')
         telefono.send_keys('3135555555')
 
@@ -49,7 +49,7 @@ class FunctionalTest(TestCase):
         nombreUsuario.send_keys('ba.montanez')
 
         clave = self.browser.find_element_by_id('id_password')
-        clave.send_keys('123456')
+        clave.send_keys('prueba123')
 
         botonGrabar = self.browser.find_element_by_id('id_grabar')
         botonGrabar.click()
