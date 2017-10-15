@@ -43,7 +43,7 @@ class FunctionalTest(TestCase):
         correo.send_keys('ba.montanez@uniandes.edu.co')
 
         imagen = self.browser.find_element_by_id('id_imagen')
-        imagen.send_keys('C:\developer.jpg')
+        imagen.send_keys('C:\chromedriver\developer.jpg')
 
         nombreUsuario = self.browser.find_element_by_id('id_username')
         nombreUsuario.send_keys('ba.montanez')
@@ -51,8 +51,12 @@ class FunctionalTest(TestCase):
         clave = self.browser.find_element_by_id('id_password')
         clave.send_keys('prueba123')
 
-        botonGrabar = self.browser.find_element_by_id('id_grabar')
-        botonGrabar.click()
+        spanIf = self.browser.find_element(By.XPATH, '//span[text()="Betzy Montanez"]')
+
+        if( (self.assertIn('Betzy Montanez',  spanIf.text ))==False ):
+            botonGrabar = self.browser.find_element_by_id('id_grabar')
+            botonGrabar.click()
+
         self.browser.implicitly_wait(3)
         span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Montanez"]')
 
