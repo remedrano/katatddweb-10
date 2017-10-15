@@ -89,3 +89,49 @@ class FunctionalTest(TestCase):
         span = self.browser.find_element(By.XPATH, '//span[text()=" Logout"]')
 
         self.assertIn('Logout', span.text)
+
+    def test_Editar(self):
+        self.browser.get('http://localhost:8000')
+        link = self.browser.find_element_by_id('id_editar')
+        link.click()
+
+        nombre = self.browser.find_element_by_id('id_nombre')
+        nombre.clear()
+        nombre.send_keys('Betzy Editado')
+
+        apellidos = self.browser.find_element_by_id('id_apellidos')
+        apellidos.clear()
+        apellidos.send_keys('Montanez Editado')
+
+        experiencia = self.browser.find_element_by_id('id_aniosExperiencia')
+        experiencia.clear()
+        experiencia.send_keys('10')
+
+        self.browser.find_element_by_xpath(
+            "//select[@id='id_tiposDeServicio']/option[text()='Desarrollador Web']").click()
+        telefono = self.browser.find_element_by_id('id_telefono')
+        telefono.clear()
+        telefono.send_keys('313555666')
+
+        correo = self.browser.find_element_by_id('id_correo')
+        correo.clear()
+        correo.send_keys('ba.montanez01@uniandes.edu.co')
+
+        imagen = self.browser.find_element_by_id('id_imagen')
+        imagen.send_keys('C:\chromedriver\developer.jpg')
+
+        nombreUsuario = self.browser.find_element_by_id('id_username')
+        nombreUsuario.clear()
+        nombreUsuario.send_keys('ba.montanez2')
+
+        clave = self.browser.find_element_by_id('id_password')
+        clave.clear()
+        clave.send_keys('prueba1234')
+
+        botonGrabar = self.browser.find_element_by_id('id_editar')
+        botonGrabar.click()
+
+        self.browser.implicitly_wait(3)
+        span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Editado Montanez Editado"]')
+
+        self.assertIn('Betzy Editado Montanez Editado', span.text)
