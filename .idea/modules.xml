@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/katatddweb_10.iml" filepath="$PROJECT_DIR$/.idea/katatddweb_10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CodigoBase.iml" filepath="$PROJECT_DIR$/.idea/CodigoBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/katatddweb-10.iml" filepath="$PROJECT_DIR$/.idea/katatddweb-10.iml" />
     </modules>
   </component>
 </project>
