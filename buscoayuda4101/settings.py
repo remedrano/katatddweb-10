@@ -25,9 +25,6 @@ SECRET_KEY = '20lqmf7n0=e#%2iw(jyc$x9p=yk77a!vxt=0#6q2e=_tt!mj#m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 ALLOWED_HOSTS = ['katatdd2-10.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
@@ -45,9 +42,9 @@ INSTALLED_APPS = [
     's3_folder_storage'
 ]
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -129,5 +126,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = 'staticfiles'
