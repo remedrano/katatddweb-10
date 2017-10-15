@@ -33,7 +33,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.success(request, "Bienvenido al sistema {}".format(username), extra_tags="alert-success")
+            #messages.success(request, "Bienvenido al sistema {}".format(username), extra_tags="alert-success")
             return HttpResponseRedirect('/')
         else:
             messages.error(request, "¡El usuario o la contraseña son incorrectos!", extra_tags="alert-danger")
@@ -86,7 +86,7 @@ def editar_perfil(request,idTrabajador):
         # formulario inicial
         form_trabajador = TrabajadorForm(instance=trabajador)
 
-    context = {'form_trabajador': form_trabajador}
+    context = {'form_trabajador': form_trabajador, 'form_usuario':UserForm}
     return render(request, 'polls/editar.html', context)
 
 @csrf_exempt

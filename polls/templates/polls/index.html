@@ -54,7 +54,8 @@
         </div>
     {% endfor %}
 {% endif %}
-{% if not user.is_authenticated %}
+
+
     <form class="navbar-form navbar-right" role="search">
         <div class="input-group">
             <input  type="text" class="form-control" placeholder="Buscar" name="srch-term" id="buscar">
@@ -87,7 +88,8 @@
         </div>
     {% endfor %}
     </div>
-{% else %}
+
+{% if user.is_authenticated %}
     <div class="container" style="padding: 5px">
         {% if user.is_authenticated and user.is_superuser %}
             <h3>Administrar</h3>

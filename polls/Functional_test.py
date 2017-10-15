@@ -26,10 +26,10 @@ class FunctionalTest(TestCase):
         link.click()
 
         nombre = self.browser.find_element_by_id('id_nombre')
-        nombre.send_keys('Betzy')
+        nombre.send_keys('Rafael')
 
         apellidos = self.browser.find_element_by_id('id_apellidos')
-        apellidos.send_keys('Montanez')
+        apellidos.send_keys('Medrano')
 
         experiencia = self.browser.find_element_by_id('id_aniosExperiencia')
         experiencia.send_keys('7')
@@ -40,36 +40,32 @@ class FunctionalTest(TestCase):
         telefono.send_keys('3135555555')
 
         correo = self.browser.find_element_by_id('id_correo')
-        correo.send_keys('ba.montanez@uniandes.edu.co')
+        correo.send_keys('re.medrano@uniandes.edu.co')
 
         imagen = self.browser.find_element_by_id('id_imagen')
         imagen.send_keys('C:\chromedriver\developer.jpg')
 
         nombreUsuario = self.browser.find_element_by_id('id_username')
-        nombreUsuario.send_keys('ba.montanez')
+        nombreUsuario.send_keys('re.medrano')
 
         clave = self.browser.find_element_by_id('id_password')
         clave.send_keys('prueba123')
 
-        spanIf = self.browser.find_element(By.XPATH, '//span[text()="Betzy Montanez"]')
+        botonGrabar = self.browser.find_element_by_id('id_grabar')
+        botonGrabar.click()
 
-        if( (self.assertIn('Betzy Montanez',  spanIf.text ))==False ):
-            botonGrabar = self.browser.find_element_by_id('id_grabar')
-            botonGrabar.click()
+        span = self.browser.find_element(By.XPATH, '//span[text()="Rafael Medrano"]')
 
-
-        span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Montanez"]')
-
-        self.assertIn('Betzy Montanez', span.text)
+        self.assertIn('Rafael Medrano', span.text)
 
     def test_verDetalle(self):
         self.browser.get('http://localhost:8000')
-        span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Montanez"]')
+        span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Editado Montanez Editado"]')
         span.click()
         self.browser.implicitly_wait(3)
-        h2 = self.browser.find_element(By.XPATH, '//h2[text()="Betzy Montanez"]')
+        h2 = self.browser.find_element(By.XPATH, '//h2[text()="Betzy Editado Montanez Editado"]')
 
-        self.assertIn('Betzy Montanez', h2.text)
+        self.assertIn('Betzy Editado Montanez Editado', h2.text)
 
     def test_login(self):
         self.browser.get('http://localhost:8000')
@@ -90,10 +86,25 @@ class FunctionalTest(TestCase):
 
         self.assertIn('Logout', span.text)
 
+
     def test_Editar(self):
         self.browser.get('http://localhost:8000')
-        link = self.browser.find_element_by_id('id_editar')
+        link = self.browser.find_element_by_id('id_login')
         link.click()
+
+        nombreUsuario = self.browser.find_element_by_id('username')
+        nombreUsuario.send_keys('ba.montanez')
+
+        claveIngreso = self.browser.find_element_by_id('password')
+        claveIngreso.send_keys('prueba123')
+
+        botonIngresar = self.browser.find_element_by_id('id_ingresar')
+        botonIngresar.click()
+
+        self.browser.implicitly_wait(3)
+
+        linkEditar = self.browser.find_element_by_id('id_editar')
+        linkEditar.click()
 
         nombre = self.browser.find_element_by_id('id_nombre')
         nombre.clear()
@@ -132,6 +143,6 @@ class FunctionalTest(TestCase):
         botonGrabar.click()
 
         self.browser.implicitly_wait(3)
-        span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Editado Montanez Editado"]')
 
+        span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Editado Montanez Editado"]')
         self.assertIn('Betzy Editado Montanez Editado', span.text)
