@@ -124,6 +124,7 @@
 
         $("#buscar").keyup(function(){
             $('#trabajadores').clear;
+            $('#trabajadores').html("");
             mostrarTrabajadores();
 });
     });
@@ -136,6 +137,7 @@
 
         $.getJSON("/mostrarTrabajadores/" + $("#buscar").val()).done(function (data) {
             $('#trabajadores').empty();
+            $('#trabajadores').html("");
                 $.each(data, function (key, val) {
                     $.get( "/tipoServicio/"+val.fields.tiposDeServicio, function( dataTipo ) {
                         dataTipo=jQuery.parseJSON(dataTipo);

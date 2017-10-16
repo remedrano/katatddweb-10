@@ -102,8 +102,7 @@ def mostrarTrabajadores(request, tipo=""):
     if tipo == "":
       lista_trabajadores = Trabajador.objects.all()
     else:
-      lista_trabajadores = Trabajador.objects.select_related().filter(tiposDeServicio__nombre__icontains=tipo)
-
+      lista_trabajadores = Trabajador.objects.select_related().filter(tiposDeServicio__nombre__icontains=tipo).distinct()
 
     return HttpResponse(serializers.serialize("json", lista_trabajadores))
 
