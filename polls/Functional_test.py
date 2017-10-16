@@ -152,6 +152,7 @@ class FunctionalTest(TestCase):
         span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Editado Montanez Editado"]')
         span.click()
         self.browser.implicitly_wait(3)
+        h2 = self.browser.find_element(By.XPATH, '//h2[text()="Betzy Editado Montanez Editado"]')
 
         correo = self.browser.find_element_by_id('correo')
         correo.send_keys('prueba@prueba.com')
@@ -159,9 +160,9 @@ class FunctionalTest(TestCase):
         comentario = self.browser.find_element_by_id('comentario')
         comentario.send_keys('Comentario Prueba')
 
-        botonAceptar = self.browser.find_element_by_id('Comentar')
+        botonAceptar = self.browser.find_element_by_id('id_comentar')
         botonAceptar.click()
-        self.browser.implicitly_wait(3)
+        self.browser.implicitly_wait(6)
 
-        span = self.browser.find_element(By.XPATH, '//span[text()="Comentario Prueba"]')
+        span = self.browser.find_element(By.XPATH, '//p[text()="Comentario Prueba"]')
         self.assertIn('Comentario Prueba', span.text)
