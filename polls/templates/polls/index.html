@@ -55,7 +55,30 @@
     {% endfor %}
 {% endif %}
 
-
+ <div class="col-lg-12">
+    </div>
+    <div id="trabajadores">
+    {% for trabajador in trabajadores %}
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: center; background-color: black;">
+                    <span style="color: white; font-size: large;">{{ trabajador.tiposDeServicio.nombre }}</span>
+                    <!--suppress HtmlUnknownTarget -->
+                    <img src="https://miso4202.s3.amazonaws.com/{{ trabajador.tiposDeServicio.imagen }}" />
+                </div>
+                <div class="panel-body" style="text-align: center">
+                    <a class="trabajador" href="#" data-form="{{ trabajador.id }}" style="text-decoration: none;">
+                        <!--suppress HtmlUnknownTarget -->
+                        <img class="thumbnail img-responsive center-block"
+                             src="https://miso4202.s3.amazonaws.com/{{ trabajador.imagen }}" width="300"
+                             height="300">
+                        <span>{{ trabajador.nombre }} {{ trabajador.apellidos }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 
 
 {% if user.is_authenticated %}
