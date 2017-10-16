@@ -25,7 +25,6 @@ def index(request):
                'form_trabajador': form_trabajador, 'form_usuario': form_usuario, 'base_url': settings.STATIC_URL}
     return render(request, 'polls/index.html', context)
 
-
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username', '')
