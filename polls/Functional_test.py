@@ -177,3 +177,16 @@ class FunctionalTest(TestCase):
         self.browser.implicitly_wait(3)
         span = self.browser.find_element(By.XPATH, '//span[text()="pepito perez"]')
         self.assertIn('pepito perez', span.text)
+
+    def test_buscar(self):
+        self.browser.get('http://localhost:8000')
+
+        correo = self.browser.find_element_by_id('buscar')
+        correo.send_keys('Betzy Editado Montanez Editado')
+
+        botonBuscar = self.browser.find_element_by_id('id_buscar')
+        botonBuscar.click()
+        self.browser.implicitly_wait(6)
+
+        span = self.browser.find_element(By.XPATH, '//span[text()="Betzy Editado Montanez Editado"]')
+        self.assertIn('Betzy Editado Montanez Editado', span.text)
